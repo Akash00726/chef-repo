@@ -11,5 +11,13 @@ pipeline {
         chef_cookbook_foodcritic(installation: '/usr/local/bin/foodcritic')
       }
     }
+    stage('') {
+      steps {
+        dir(path: '/home/akash/Downloads/chef-rep') {
+          sh 'knife ssh clientnode --ssh-user root --ssh-password toor "chef-client"'
+        }
+
+      }
+    }
   }
 }
